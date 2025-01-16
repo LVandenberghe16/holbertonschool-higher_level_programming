@@ -5,10 +5,8 @@ argv = sys.argv[1:]
 argc = len(argv)
 
 if argc == 0:
-    print("0 argument.")
-    sys.exit()
+    print("0 arguments.")
 else:
-    print("{} arguments:".format(argc))
-
+    print("{} argument{}".format(argc, "s" if argc > 1 else ""))
 for i in range(argc):
     print("{}: {}".format(i + 1, argv[i]))
