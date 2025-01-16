@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 import sys
 
-argc = len(sys.argv)
+argv = sys.argv[1:]
+argc = len(argv)
+
+if argc == 0:
+    print("0 argument.")
+    sys.exit()
+else:
+    print("{} arguments:".format(argc))
+
 for i in range(argc):
-    print("{}: {}".format(i, sys.argv[i]))
+    print("{}: {}".format(i + 1, argv[i]))
