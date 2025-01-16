@@ -1,2 +1,2 @@
-for letter in range(97, 123):
-    print(chr(letter), end="")
+#!/usr/bin/python3
+print("".join("{:c}".format(i) for i in range(97, 123)))

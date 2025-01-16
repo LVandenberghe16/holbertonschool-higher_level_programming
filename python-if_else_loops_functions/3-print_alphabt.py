@@ -1,4 +1,2 @@
 #!/usr/bin/python3
-for letter in range(97, 123):
-    if chr(letter) not in ['q', 'e']:
-        print(chr(letter), end="")
+print("".join("{:c}".format(i) for i in range(97, 123) if i not in (101, 113)))
