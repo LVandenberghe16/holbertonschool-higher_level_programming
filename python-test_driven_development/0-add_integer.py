@@ -6,6 +6,7 @@ The function `add_integer` takes two arguments (a and b),
 and returns their sum, casting any floats to integers.
 """
 
+
 def add_integer(a, b=98):
     """
     Adds two integers or floats, returning the result as an integer.
@@ -30,6 +31,6 @@ def add_integer(a, b=98):
     """
     if type(a) not in [int, float] or a != a:
         raise TypeError("a must be an integer")
-    if type(b) not in [int, float] or b!= b:
+    if type(b) not in [int, float] or b != b:
         raise TypeError("b must be an integer")
     return int(a) + int(b)
