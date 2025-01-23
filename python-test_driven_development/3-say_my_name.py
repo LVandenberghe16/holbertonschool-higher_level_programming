@@ -1,30 +1,36 @@
 #!/usr/bin/python3
 """
-This module defines a function to add two integers.
+This module defines a function to print a full name.
 
-The function `add_integer` takes two arguments (a and b),
-and returns their sum, casting any floats to integers.
+The function `say_my_name` takes two arguments (first_name and last_name),
+and prints "My name is <first_name> <last_name>".
 """
+
 
 def say_my_name(first_name, last_name=""):
     """
-    Adds two integers or floats, returning the result as an integer.
+    Prints "My name is <first_name> <last_name>".
 
     Parameters:
-    a (int, float): The first number.
-    b (int, float, optional): The second number (default is 98).
-
-    Returns:
-    int: The sum of the two numbers.
+    first_name (str): The first name.
+    last_name (str, optional): The last name (default is an empty string).
 
     Raises:
-    TypeError: If a or b is not an integer or float.
+    TypeError: If first_name or last_name is not a string.
 
     Example:
-    >>> add_integer(1, 2)
-    3
-    >>> add_integer(100.5, 2)
-    102
-    >>> add_integer(2)
-    100
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+    >>> say_my_name("Walter", "White")
+    My name is Walter White
+    >>> say_my_name("Bob")
+    My name is Bob
+    >>> say_my_name(12, "White")
+    TypeError: first_name must be a string
     """
+
+    if type(first_name) not in [str]:
+        raise TypeError("first_name must be a string")
+    if type(last_name) not in [str]:
+        raise TypeError("last_name must be a string")
+    print("My name is {} {}".format(first_name, last_name))
