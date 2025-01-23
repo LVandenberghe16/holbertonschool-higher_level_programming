@@ -1,0 +1,1 @@
+>>> from 4-print_square import print_square
