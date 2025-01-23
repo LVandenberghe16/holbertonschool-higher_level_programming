@@ -1,5 +1,19 @@
 #!/usr/bin/python3
+
 def add_integer(a, b=98):
+    """
+    Adds two integers or floats, returns their sum as an integer.
+
+    Parameters:
+    a (int, float): The first number.
+    b (int, float, optional): The second number (default is 98).
+
+    Returns:
+    int: The sum of the two numbers.
+
+    Raises:
+    TypeError: If a or b is not an integer or float.
+    """
     if type(a) not in [int, float]:
         raise TypeError("a must be an integer")
     if type(b) not in [int, float]:
