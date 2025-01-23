@@ -1,3 +1,12 @@
+import importlib.util
+import sys
+
+# Dynamically load the module
+spec = importlib.util.spec_from_file_location("add_integer", "./0-add_integer.py")
+add_integer_module = importlib.util.module_from_spec(spec)
+sys.modules["add_integer"] = add_integer_module
+spec.loader.exec_module(add_integer_module)
+
 >>> from 0-add_integer import add_integer
 >>> add_integer(1, 2)
 3
