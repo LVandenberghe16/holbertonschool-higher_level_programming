@@ -6,6 +6,7 @@ The function `add_integer` takes two arguments (a and b),
 and returns their sum, casting any floats to integers.
 """
 
+
 def matrix_divided(matrix, div):
     """
     Divides all elements of a matrix by a given number.
@@ -24,13 +25,16 @@ def matrix_divided(matrix, div):
     ZeroDivisionError: If div is zero.
     """
 
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+    if not isinstance(matrix, list) or \
+       not all(isinstance(row, list) for row in matrix):
+        raise TypeError("matrix must be a matrix (list of lists) \
+        of integers/floats")
 
     for row in matrix:
         for element in row:
             if not isinstance(element, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a matrix (list of lists) \
+                of integers/floats")
 
     row_length = len(matrix[0])
     for row in matrix:
