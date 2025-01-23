@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """
-This module defines a function to add two integers.
+This module defines a function to divide all elements of a matrix.
 
-The function `add_integer` takes two arguments (a and b),
-and returns their sum, casting any floats to integers.
+The function `matrix_divided` takes a matrix and a divisor,
+and returns a new matrix with all elements divided by the divisor.
 """
 
 
@@ -27,14 +27,14 @@ def matrix_divided(matrix, div):
 
     if not isinstance(matrix, list) or \
        not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a matrix (list of lists) \
-        of integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists) of "
+                        "integers/floats")
 
     for row in matrix:
         for element in row:
             if not isinstance(element, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) \
-                of integers/floats")
+                raise TypeError("matrix must be a matrix (list of lists) of "
+                                "integers/floats")
 
     row_length = len(matrix[0])
     for row in matrix:
