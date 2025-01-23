@@ -1,30 +1,35 @@
 #!/usr/bin/python3
 """
-This module defines a function to add two integers.
-
-The function `add_integer` takes two arguments (a and b),
-and returns their sum, casting any floats to integers.
+This module defines a function that prints a square using the '#' character.
 """
+
 
 def print_square(size):
     """
-    Adds two integers or floats, returning the result as an integer.
+    Prints a square with the '#' character of the given size.
 
     Parameters:
-    a (int, float): The first number.
-    b (int, float, optional): The second number (default is 98).
-
-    Returns:
-    int: The sum of the two numbers.
+    size (int): The size length of the square.
 
     Raises:
-    TypeError: If a or b is not an integer or float.
+    TypeError: If size is not an integer.
+    ValueError: If size is less than 0.
 
     Example:
-    >>> add_integer(1, 2)
-    3
-    >>> add_integer(100.5, 2)
-    102
-    >>> add_integer(2)
-    100
+    >>> print_square(2)
+    ##
+    ##
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
     """
+
+    if type(size) != int:
+        raise TypeError("size must be an integer")
+    if size < 0:
+        raise ValueError("size must be >= 0")
+
+    for _ in range(size):
+        print("#" * size)

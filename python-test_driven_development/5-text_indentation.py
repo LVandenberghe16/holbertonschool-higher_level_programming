@@ -1,30 +1,40 @@
 #!/usr/bin/python3
 """
-This module defines a function to add two integers.
-
-The function `add_integer` takes two arguments (a and b),
-and returns their sum, casting any floats to integers.
+This module defines a function to print text with specific formatting.
 """
+
 
 def text_indentation(text):
     """
-    Adds two integers or floats, returning the result as an integer.
+    Prints a text with 2 new lines after each '.', '?', and ':'.
 
     Parameters:
-    a (int, float): The first number.
-    b (int, float, optional): The second number (default is 98).
-
-    Returns:
-    int: The sum of the two numbers.
+    text (str): The text to format and print.
 
     Raises:
-    TypeError: If a or b is not an integer or float.
+    TypeError: If text is not a string.
 
     Example:
-    >>> add_integer(1, 2)
-    3
-    >>> add_integer(100.5, 2)
-    102
-    >>> add_integer(2)
-    100
+    >>> text_indentation("Hello. How are you? Fine:")
+    Hello.
+
+    How are you?
+
+    Fine:
     """
+
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+
+    result = ""
+    skip_space = False
+    for char in text:
+        if char in ".:?":
+            result += char + "\n\n"
+            skip_space = True
+        elif char == " " and skip_space:
+            continue
+        else:
+            result += char
+            skip_space = False
+    print(result.strip(), end="")
