@@ -8,7 +8,7 @@ and returns their sum, casting any floats to integers.
 
 def add_integer(a, b=98):
     """
-    Adds two integers or floats, returns their sum as an integer.
+    Adds two integers or floats, returning the result as an integer.
 
     Parameters:
     a (int, float): The first number.
@@ -19,6 +19,14 @@ def add_integer(a, b=98):
 
     Raises:
     TypeError: If a or b is not an integer or float.
+
+    Example:
+    >>> add_integer(1, 2)
+    3
+    >>> add_integer(100.5, 2)
+    102
+    >>> add_integer(2)
+    100
     """
     if type(a) not in [int, float]:
         raise TypeError("a must be an integer")
