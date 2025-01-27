@@ -43,6 +43,7 @@ class Square:
         Print a square of size self.__size.
         """
         if self.__size == 0:
-            print()
+                print()
         else:
-            print('\n'.join([''.join('#' * self.__size)] * self.__size))
+            for i in range (self.__size):
+                print("#" * self.__size)
