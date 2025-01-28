@@ -1,3 +1,10 @@
+"""
+Ce module définit une classe square (ou carré)
+Pour l'instant ce module est vide
+Il faudra définir ce qu'est un carré
+"""
+
+
 class Rectangle:
     """Defines a rectangle by width and height."""
 
