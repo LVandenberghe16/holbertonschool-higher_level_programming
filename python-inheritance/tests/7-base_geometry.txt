@@ -1,16 +1,32 @@
+==========================
+BaseGeometry Doctest
+==========================
+
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
->>> bg.integer_validator("width", 10)
->>> print("Valid integer: 10")
-Valid integer: 10
+# Valid integer cases
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
 
->>> bg.integer_validator("height", -5)
+# Invalid cases: TypeError when input is not an integer
+>>> bg.integer_validator("name", "John")
 Traceback (most recent call last):
     ...
-ValueError: height must be greater than 0
+TypeError: name must be an integer
 
->>> bg.integer_validator("size", "hello")
+>>> bg.integer_validator("age", 0.7)
 Traceback (most recent call last):
     ...
-TypeError: size must be an integer
+TypeError: age must be an integer
+
+# Invalid cases: ValueError when input is <= 0
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 0
+
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+    ...
+ValueError: distance must be greater than 0
