@@ -39,3 +39,8 @@ class Rectangle(Shape):
 
     def perimeter(self):
         return 2 * (self.__width + self.__height)
+
+def shape_info(shape):
+    """Prints the area and perimeter of a shape using ducktaping."""
+    print(f"Area: {shape.area()}")
+    print(f"Perimeter: {shape.perimeter()}")
