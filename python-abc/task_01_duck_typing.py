@@ -8,17 +8,21 @@ from abc import ABC, abstractmethod
 from math import pi
 
 class Shape(ABC):
-    """An abstract class representing a shape."""
+    """Abstract base class for shapes."""
+
     @abstractmethod
     def area(self):
+        """Calculate and return the area of the shape."""
         pass
 
     @abstractmethod
     def perimeter(self):
+        """Calculate and return the perimeter of the shape."""
         pass
 
 class Circle(Shape):
-    """A class representing a circle."""
+    """Concrete class representing a circle."""
+
     def __init__(self, radius):
         self.__radius = radius
 
@@ -29,7 +33,8 @@ class Circle(Shape):
         return 2 * pi * self.__radius
 
 class Rectangle(Shape):
-    """A class representing a rectangle."""
+    """Concrete class representing a rectangle."""
+
     def __init__(self, width, height):
         self.__width = width
         self.__height = height
@@ -41,8 +46,6 @@ class Rectangle(Shape):
         return 2 * (self.__width + self.__height)
 
 def shape_info(shape):
-    """Prints the area and perimeter of a shape using ducktaping."""
-    area = shape.area()
-    perimeter = shape.perimeter()
-    print(f"Area: {area}")
-    print(f"Perimeter: {perimeter}")
+    """Prints the area and perimeter of a shape using duck typing."""
+    print(f"Area: {shape.area()}")
+    print(f"Perimeter: {shape.perimeter()}")
