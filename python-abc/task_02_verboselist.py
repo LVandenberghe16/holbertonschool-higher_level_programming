@@ -14,7 +14,7 @@ class VerboseList(list):
         super().pop(item)
 
     def extend(self, item):
-        print("Extended the list with [{}]".format(item))
+        print("Extended the list with [{}]".format(len(item)))
         super().extend(item)
 
     def remove(self, item):
