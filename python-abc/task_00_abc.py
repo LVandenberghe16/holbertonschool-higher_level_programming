@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+"""
+Module
+"""
+
 from abc import ABC, abstractmethod
 
 class Animal(ABC):
@@ -10,9 +15,9 @@ class Animal(ABC):
 class Dog(Animal):
     """A class representing a dog."""
     def sound(self):
-        print("Bark")
+        return "Bark"
 
 class Cat(Animal):
     """A class representing a cat."""
     def sound(self):
-        print("Meow")
+        return "Meow"
