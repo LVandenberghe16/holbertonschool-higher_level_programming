@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+Module
+"""
+
 class MyList(list):
     """Custom list class that extends the built-in list."""
 
