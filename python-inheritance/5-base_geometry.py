@@ -4,6 +4,7 @@
 Module
 """
 
+
 class BaseGeometry:
     """An empty class representing geometric shapes."""
     pass

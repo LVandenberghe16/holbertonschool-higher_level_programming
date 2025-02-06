@@ -4,6 +4,7 @@
 Module
 """
 
+
 class BaseGeometry:
     """BaseGeometry class with area and integer validation."""
 

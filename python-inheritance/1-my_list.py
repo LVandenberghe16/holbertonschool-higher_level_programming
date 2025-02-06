@@ -3,6 +3,7 @@
 Module
 """
 
+
 class MyList(list):
     """Custom list class that extends the built-in list."""
 

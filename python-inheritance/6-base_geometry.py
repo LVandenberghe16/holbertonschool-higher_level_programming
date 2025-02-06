@@ -4,6 +4,7 @@
 Module
 """
 
+
 class BaseGeometry:
     """BaseGeometry class with an area method."""
 
