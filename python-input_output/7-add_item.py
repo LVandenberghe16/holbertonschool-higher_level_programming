@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""
+Module de json
+"""
 
 
 import sys
-import json
 from os import path
 
 
