@@ -8,9 +8,6 @@ def append_write(filename="", text=""):
     """
     méthode pour ajouter du texte dans un fichier
     """
-    with open(filename, 'w', encoding="utf-8") as f:
-        if f != 0:
-            f.write(text)
-        else:
-            f.append(text)
+    with open(filename, 'a', encoding="utf-8") as f:
+        f.write(text)
         return len(text)
