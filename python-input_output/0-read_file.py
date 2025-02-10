@@ -3,4 +3,3 @@
 def read_file(filename=""):
     f = open(filename, 'r')
     print(f.read())
-    f.close
