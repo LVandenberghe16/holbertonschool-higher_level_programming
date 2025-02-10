@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module
+Module de json
 """
 
 
@@ -8,8 +8,6 @@ import json
 
 
 def load_from_json_file(filename):
-    """
-    méthode pour ajouter du texte dans un fichier
-    """
-    with open(filename, 'r', encoding="utf-8") as file:
-        return json.loads(file)
+    """Creates an object from a JSON file"""
+    with open(filename, 'r', encoding='utf-8') as f:
+        return json.load(f)
