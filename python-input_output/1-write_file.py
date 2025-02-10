@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""
+Module
+"""
 
-def read_file(filename=""):
-    f = open(filename, 'r')
-    print(f.read(), end="")
 
-
-read_file("my_file_0.txt")
+def write_file(filename="", text=""):
+    """
+    méthode pour écrire dans un fichier
+    """
+    with open(filename, 'w', encoding="utf-8") as f:
+        f.write(text)
+        f.close()
