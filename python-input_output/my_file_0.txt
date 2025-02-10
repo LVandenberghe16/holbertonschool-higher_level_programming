@@ -1,6 +1,0 @@
-ceci est un exemple pour l'exercice 0
-Lorem
-ipsum
-dolore
-holberton
-normalement je close bien le fichier
