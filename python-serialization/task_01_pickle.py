@@ -55,8 +55,8 @@ class CustomObject:
     def display(self):
         """Displays the object's attributes."""
         print(f'Name: {self.name}\n'
-            f'Age: {self.age}\n'
-            f'Is Student: {self.is_student}')
+              f'Age: {self.age}\n'
+              f'Is Student: {self.is_student}')
 
     def serialize(self, filename):
         """Serializes the object to a file."""
