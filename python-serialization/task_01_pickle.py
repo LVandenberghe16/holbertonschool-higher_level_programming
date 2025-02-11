@@ -30,7 +30,7 @@ class CustomObject:
         """
         if not isinstance(name, str):
             raise TypeError("name must be a string")
-        if name == None:
+        if name is None:
             raise ValueError("name should be a string")
         self._name = name
 
@@ -76,10 +76,17 @@ class CustomObject:
         print(f'Name: {self._name}\nAge: {self._age}\nIs student: {self._is_student}')
 
     def serialize(self, filename):
-        with open(filename, 'wb') as file:
-            pickle.dump(self, file)
+        try:
+            with open(filename, 'wb') as file:
+                pickle.dump(self, file)
+        except Exception as e:
+            print(f"Error during serialization: {e}")
 
     @classmethod
     def deserialize(cls, filename):
-        with open(filename, 'rb') as file:
-            return pickle.load(file)
+        try:
+            with open(filename, 'rb') as file:
+                return pickle.load(file)
+        except (FileNotFoundError, pickle.PickleError) as e:
+            print(f"Error during deserialization: {e}")
+            return None
