@@ -73,20 +73,14 @@ class CustomObject:
         self._is_student = is_student
 
     def display(self):
-        print(f'Name: {self._name}\nAge: {self._age}\nIs student: {self._is_student}')
+        print(f'Name: {self._name}\nAge: {self._age}\n\
+            Is student: {self._is_student}')
 
     def serialize(self, filename):
-        try:
-            with open(filename, 'wb') as file:
-                pickle.dump(self, file)
-        except Exception as e:
-            print(f"Error during serialization: {e}")
+        with open(filename, 'wb') as file:
+            pickle.dump(self, file)
 
     @classmethod
     def deserialize(cls, filename):
-        try:
-            with open(filename, 'rb') as file:
-                return pickle.load(file)
-        except (FileNotFoundError, pickle.PickleError) as e:
-            print(f"Error during deserialization: {e}")
-            return None
+        with open(filename, 'rb') as file:
+            return pickle.load(file)
