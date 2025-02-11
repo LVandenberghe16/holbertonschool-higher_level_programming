@@ -1,53 +1,39 @@
 #!/usr/bin/python3
 """
-Module
+Module for serializing and deserializing a custom object using pickle.
 """
-
 
 import pickle
 
 
 class CustomObject:
-
     def __init__(self, name, age, is_student):
-        self._name = name
-        self._age = age
-        self._is_student = is_student
+        self.name = name  # Uses the setter method
+        self.age = age
+        self.is_student = is_student
 
     @property
     def name(self):
-        """
-        Getter pour l'attribut name.
-        Retourne la valeur de name.
-        """
+        """Getter for name."""
         return self._name
 
     @name.setter
-    def size(self, name):
-        """
-        Setter pour l'attribut name.
-        Vérifie que name est une string.
-        """
+    def name(self, name):
+        """Setter for name, ensuring it is a valid string."""
         if not isinstance(name, str):
             raise TypeError("name must be a string")
-        if name is None:
-            raise ValueError("name should be a string")
+        if name is None or name.strip() == "":
+            raise ValueError("name cannot be empty or None")
         self._name = name
 
     @property
     def age(self):
-        """
-        Getter pour l'attribut age.
-        Retourne la valeur de age.
-        """
+        """Getter for age."""
         return self._age
 
     @age.setter
     def age(self, age):
-        """
-        Setter pour l'attribut age.
-        Vérifie que age est un entier >= 0.
-        """
+        """Setter for age, ensuring it is a non-negative integer."""
         if not isinstance(age, int):
             raise TypeError("age must be an integer")
         if age < 0:
@@ -56,31 +42,35 @@ class CustomObject:
 
     @property
     def is_student(self):
-        """
-        Getter pour l'attribut is_student.
-        Retourne la valeur de is_student.
-        """
+        """Getter for is_student."""
         return self._is_student
 
     @is_student.setter
     def is_student(self, is_student):
-        """
-        Setter pour l'attribut is_student.
-        Vérifie que is_student est un booléen.
-        """
+        """Setter for is_student, ensuring it is a boolean."""
         if not isinstance(is_student, bool):
             raise TypeError("is_student must be a boolean")
         self._is_student = is_student
 
     def display(self):
-        print(f'Name: {self._name}\nAge: {self._age}\n\
-            Is student: {self._is_student}')
+        """Displays the object's attributes."""
+        print(f'Name: {self.name}\nAge: {self.age}\n\
+            Is Student: {self.is_student}')
 
     def serialize(self, filename):
-        with open(filename, 'wb') as file:
-            pickle.dump(self, file)
+        """Serializes the object to a file."""
+        try:
+            with open(filename, 'wb') as file:
+                pickle.dump(self, file)
+        except Exception as e:
+            print(f"Error during serialization: {e}")
 
     @classmethod
     def deserialize(cls, filename):
-        with open(filename, 'rb') as file:
-            return pickle.load(file)
+        """Deserializes an object from a file."""
+        try:
+            with open(filename, 'rb') as file:
+                return pickle.load(file)
+        except (FileNotFoundError, pickle.PickleError) as e:
+            print(f"Error during deserialization: {e}")
+            return None
