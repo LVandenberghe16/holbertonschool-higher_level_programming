@@ -33,22 +33,18 @@ def show_user_profile(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    """ Ajoute un nouvel utilisateur """
-    data = request.get_json()
+    new_user = request.get_json()
 
-    if "username" not in data:
+    if 'username' not in new_user:
         return jsonify({"error": "Username is required"}), 400
 
-    username = data["username"]
-
-    if username in users:
-        return jsonify({"error": "User already exists"}), 409
+    username = new_user['username']
 
     users[username] = {
-        "username": data.get("username"),
-        "name": data.get("name"),
-        "age": data.get("age"),
-        "city": data.get("city")
+        "username": new_user.get('username'),
+        "name": new_user.get('name'),
+        "age": new_user.get('age'),
+        "city": new_user.get('city')
     }
 
     return jsonify({
