@@ -3,15 +3,12 @@
 Flask API for user management
 """
 
-
 from flask import Flask, jsonify, request
-
 
 app = Flask(__name__)
 
 users = {
-    "jane": {"username": "jane", "name": "Jane", "age": 28, 
-             "city": "Los Angeles"}
+    "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"}
 }
 
 @app.route('/')
@@ -35,8 +32,10 @@ def show_user_profile(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
+    """ Ajoute un nouvel utilisateur """
     data = request.get_json()
 
+    # Vérification des données
     if not data or "username" not in data:
         return jsonify({"error": "Username is required"}), 400
 
