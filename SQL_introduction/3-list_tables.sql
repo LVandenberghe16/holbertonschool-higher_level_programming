@@ -1,3 +1,3 @@
---comment
---comment
+-- comment
+-- comment
 SHOW TABLES;
