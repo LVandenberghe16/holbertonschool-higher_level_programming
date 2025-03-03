@@ -1,3 +1,5 @@
+--comment
+--comment
 CREATE TABLE second_table (
     id INT,
     name VARCHAR(256),
