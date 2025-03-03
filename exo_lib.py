@@ -1,60 +1,74 @@
-class Bibliotheque:
-    """Defines a Bibliotheque."""
+#!/usr/bin/python3
 
-    max_authors = 5
+class Library:
+
+    max_books_number = 100
 
     def __init__(self, name):
-        self.name = name
-        self.dict_authors = {}
-        self.nb_books = 0
+        self._library_name = name
+        self._number_of_books = 0
+        self._books_by_author = {}
 
     @property
     def name(self):
-        return self.__name
+        return self._library_name
 
     @name.setter
     def name(self, value):
         if not isinstance(value, str):
-            raise TypeError("name must be a string")
-        self.__name = value
+            raise TypeError("Name must be a string")
+        self._library_name = value
+        print(f"Name of the library has been setted to {self._library_name}")
 
-    def ajouter_auteur(self, auteur):
-        if len(self.dict_authors) < self.max_authors:
-            self.dict_authors[auteur] = []
-        else:
-            print("Impossible d'ajouter un nouvel auteur, la bibliothèque a déjà 5 auteurs")
+    @property
+    def number_of_books(self):
+        return self._number_of_books
 
-    def ajouter_livre(self, auteur, livre):
-        if auteur not in self.dict_authors and len(self.dict_authors) < self.max_authors:
-            self.dict_authors[auteur] = [livre]
-            self.nb_books += 1
-        elif auteur in self.dict_authors:
-            self.dict_authors[auteur].append(livre)
-            self.nb_books += 1
-        else:
-            print("L'auteur n'existe pas dans la bibliothèque")
+    @property
+    def authors(self):
+        return self._books_by_author
 
-    def supprimer_livre(self, auteur, livre):
-        if auteur in self.dict_authors and livre in self.dict_authors[auteur]:
-            self.dict_authors[auteur].remove(livre)
-            self.nb_books -= 1
-        else:
-            print("Le livre n'existe pas dans la bibliothèque")
+    def add_author(self, author: str):
+        if author in self.authors.keys():
+            raise KeyError("The author already exists")
+        if not isinstance(author, str):
+            raise TypeError("The author must be a string")
+        self._books_by_author[author] = []
+        print(f"The author {author} has been added to the library")
 
-    def supprimer_auteur(self, auteur):
-        if auteur in self.dict_authors:
-            del self.dict_authors[auteur]
+    def add_book(self, author: str, title: str):
+        if self._number_of_books < Library.max_books_number:
+            if author not in self._books_by_author.keys():
+                self.add_author(author)
+            if title in self._books_by_author[author]:
+                raise ValueError("This book is already in the library")
+            self._books_by_author[author].append(title)
+            self._number_of_books += 1
+            print(f"The book {title} has been added to the library")
         else:
-            print("L'auteur n'existe pas dans la bibliothèque")
+            print("La bibliothèque est complète. Supprimez en un")
 
-    def recuperer_livres_auteur(self, auteur):
-        if auteur in self.dict_authors:
-            return self.dict_authors[auteur]
-        else:
-            print("L'auteur n'existe pas dans la bibliothèque")
 
-    def recuperer_livre(self, auteur, livre):
-        if auteur in self.dict_authors and livre in self.dict_authors[auteur]:
-            return livre
-        else:
-            print("Le livre n'existe pas dans la bibliothèque")
+    def delete_book(self, author: str, title :str):
+        if author not in self._books_by_author.keys():
+            raise KeyError("The author has not been found in the library")
+        if title not in self._books_by_author[author]:
+            raise ValueError("The book has not been found in the library. Are you sure you gave the right title ?")
+        self._books_by_author[author].remove(title)
+        self._number_of_books -= 1
+        print(f"The book {title} has been removed from the library")
+
+    def get_books_by_author(self, author: str):
+        if author not in self._books_by_author.keys():
+            raise KeyError("The author has not been found in the library")
+        return self._books_by_author[author]
+
+
+    def get_book(self, author: str, title: str):
+        if author not in self._books_by_author.keys():
+            raise KeyError("The author has not been found in the library")
+        if title not in self._books_by_author[author]:
+            raise ValueError("The book has not been found in the library. Are you sure you gave the right title ?")
+        for book in self._books_by_author[author]:
+            if book == title:
+                return(book)

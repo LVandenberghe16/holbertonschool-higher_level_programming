@@ -1,30 +1,66 @@
 #!/usr/bin/python3
-from exo_lib import Bibliotheque
+from exo_lib import Library
+from comic_library import ComicLibrary
 
-# Création d'une bibliothèque avec un nom et une limite de 5 auteurs
-biblio = Bibliotheque("Médiathèque Centrale")
+def main():
+    # Create a library
+    print("=== Creating Library ===")
+    my_library = Library("City Library")
+    print(my_library)
 
-# Ajout d'auteurs et de livres
-biblio.ajouter_livre("J.K. Rowling", "Harry Potter à l'École des Sorciers")
-biblio.ajouter_livre("J.K. Rowling", "Harry Potter et la Chambre des Secrets")
-biblio.ajouter_livre("George Orwell", "1984")
-biblio.ajouter_livre("Victor Hugo", "Les Misérables")
-biblio.ajouter_livre("J.R.R. Tolkien", "Le Seigneur des Anneaux")
+    # Test setters
+    print("\n=== Testing modifications ===")
+    my_library.name = "Grand Library"
 
-# Tentative d'ajout d'un 6e auteur (devrait échouer)
-biblio.ajouter_livre("Albert Camus", "L'Étranger")  # Impossible car la bibliothèque a déjà 5 auteurs
+    # Add authors and books
+    print("\n=== Adding authors and books ===")
+    my_library.add_author("William Shakespeare")
+    my_library.add_book("William Shakespeare", "Romeo and Juliet")
+    my_library.add_book("William Shakespeare", "Hamlet")
+    print(my_library.authors)  # Print authors dictionary
 
-# Récupération des livres d'un auteur
-print("📚 Livres de J.K. Rowling :", biblio.recuperer_livres_auteur("J.K. Rowling"))
+    # Display books by author
+    print("\n=== List of books by author ===")
+    books = my_library.get_books_by_author("William Shakespeare")
+    print(books)
 
-# Suppression d'un livre
-biblio.supprimer_livre("George Orwell", "1984")
+    # Test book search
+    print("\n=== Book search ===")
+    book = my_library.get_book("William Shakespeare", "Hamlet")
+    print(book)
 
-# Récupération d'un livre spécifique
-print("📖 Recherche d'un livre :", biblio.recuperer_livre("J.K. Rowling", "Harry Potter et la Chambre des Secrets"))
+    # Test deletion
+    print("\n=== Testing deletion ===")
+    my_library.delete_book("William Shakespeare", "Romeo and Juliet")
+    my_library.get_books_by_author("William Shakespeare")
 
-# Suppression d'un auteur entier
-biblio.supprimer_auteur("Victor Hugo")
+    # Test errors
+    print("\n=== Testing errors ===")
+    try:
+        my_library.add_author("William Shakespeare")  # Author already exists
+    except KeyError as e:
+        print(f"Expected error: {e}")
 
-# Vérification de l'état final des auteurs et livres
-print("📚 État final des auteurs :", biblio.dict_authors)
+    try:
+        my_library.get_books_by_author("Jane Austen")  # Author doesn't exist
+    except KeyError as e:
+        print(f"Expected error: {e}")
+
+    # Création d'une bibliothèque de BD
+    comic_lib = ComicLibrary("Ma Bibliothèque de BD")
+
+    # Ajout de BD
+    comic_lib.add_book("Hergé", "Tintin au Tibet", "Tintin")
+    comic_lib.add_book("Hergé", "Le Lotus Bleu", "Tintin")
+
+    # Recherche par série
+    tintin_books = comic_lib.get_comics_by_serie("Tintin")
+    print(tintin_books)
+
+
+    # Recherche d'artiste
+    title = comic_lib.get_comic("Hergé", "Le Lotus Bleu")
+    print(title)
+
+if __name__ == "__main__":
+    main()
