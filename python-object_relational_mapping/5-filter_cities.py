@@ -1,17 +1,25 @@
 #!/usr/bin/python3
-"""Lists all cities of a given state (SQL Injection Safe)"""
+"""
+oui
+"""
+
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3])
-
-    cur = db.cursor()
-    cur.execute("SELECT cities.name FROM cities JOIN states ON \
-                cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id ASC", (sys.argv[4],))
-
-    print(", ".join([row[0] for row in cur.fetchall()]))
-
-    cur.close()
+    db = MySQLdb.connect(host="localhost", port=3306,
+                         user=argv[1], passwd=argv[2], db=argv[3])
+    cursor = db.cursor()
+    state_name = argv[4]
+    cursor.execute("""
+                   SELECT cities.name
+                   FROM cities
+                   INNER JOIN states
+                   ON cities.state_id = states.id
+                   WHERE states.name = %s
+                   ORDER BY cities.id ASC
+                   """, (state_name,))
+    rows = cursor.fetchall()
+    print(", ".join([row[0] for row in rows]))
+    cursor.close()
     db.close()
