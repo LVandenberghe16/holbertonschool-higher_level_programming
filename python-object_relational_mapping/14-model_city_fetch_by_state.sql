@@ -1,4 +1,5 @@
--- Create database hbtn_0e_14_usa, tables states and cities + some data
+-- comment
+-- comment
 CREATE DATABASE IF NOT EXISTS hbtn_0e_14_usa;
 USE hbtn_0e_14_usa;
 
